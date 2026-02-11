@@ -1,0 +1,11 @@
+measure,baseline_tech,new_tech,capex_rs_per_t_capacity,opex_rs_per_t,lifetime,emission_baseline_tco2_per_t,emission_new_tco2_per_t,annual_production_t,fuel_cost_rs,electricity_cost_rs,adoption_potential_%
+Waste Heat Recovery,BF-BOF,BF-BOF + WHR,2500,-150,20,2.5,2.3,50000000,4000,3500,60
+Top Gas Recycling,BF-BOF,BF-BOF + TGR,8000,200,25,2.5,2.0,50000000,4000,3500,40
+Energy Efficiency Upgrade,BF-BOF,Efficient BF-BOF,1500,-200,15,2.5,2.35,50000000,4000,3500,70
+Increased Scrap Use,BF-BOF,Hybrid BF-EAF,6000,300,20,2.5,1.8,50000000,4000,3500,30
+Natural Gas DRI,Coal DRI,NG-DRI + EAF,12000,500,20,2.8,2.0,20000000,4500,3800,35
+Hydrogen DRI,Coal DRI,H2-DRI + EAF,25000,1200,20,2.8,0.8,20000000,4500,3800,20
+CCS on BF,BF-BOF,BF-BOF + CCS,18000,1000,25,2.5,0.9,50000000,4000,3500,25
+Biomass Injection,BF-BOF,BF-BOF + Biomass,7000,400,15,2.5,2.1,50000000,4000,3500,30
+Electric Arc Furnace Expansion,BF-BOF,EAF (Scrap Based),15000,600,20,2.5,0.7,50000000,4000,3800,25
+Renewable Electricity Integration,EAF,EAF + RE Power,5000,100,15,0.7,0.4,15000000,0,3000,50
