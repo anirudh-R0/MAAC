@@ -9,7 +9,19 @@ class MAACModel:
         
     def capital_recovery_factor(self, n):
         r = self.r
-        return (r * (1+r)**n) / ((1+r)**n - 1)
+        # handle scalar or array-like `n` (pd.Series, list, np.array)
+        import numpy as _np
+        if hasattr(n, 'values'):
+            n_index = getattr(n, 'index', None)
+            n_arr = n.values.astype(float)
+            crf_arr = (r * _np.power(1+r, n_arr)) / (_np.power(1+r, n_arr) - 1)
+            if n_index is not None:
+                import pandas as _pd
+                return _pd.Series(crf_arr, index=n_index)
+            return crf_arr
+        else:
+            n_val = float(n)
+            return (r * (1+r)**n_val) / ((1+r)**n_val - 1)
     
     def compute_abatement(self):
         self.df["emission_reduction"] = (
@@ -41,5 +53,8 @@ class MAACModel:
             self.df["incremental_cost_per_t"] /
             self.df["emission_reduction"]
         )
-        
+        # guard against division by zero or very small reductions
+        self.df.replace([np.inf, -np.inf], np.nan, inplace=True)
+        self.df.loc[self.df['emission_reduction'] == 0, 'MAC_rs_per_tco2'] = np.nan
+
         return self.df
